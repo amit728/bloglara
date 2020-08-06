@@ -63,4 +63,12 @@ class LoginController extends Controller
     public function guard(){
         return Auth::guard('admin');
     }
+
+    protected function credentials(Request $request)
+    {
+        return ['email' => $request->email,
+                'password' => $request->password,
+                'status' => 1,
+                ];
+    }
 }

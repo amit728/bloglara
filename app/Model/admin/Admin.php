@@ -9,4 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Authenticatable
 {
     use Notifiable;
+
+    public function roles(){
+    	return $this->belongsTOMany('App\Model\Admin\Role');
+    }
 }

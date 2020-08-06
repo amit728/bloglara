@@ -26,9 +26,14 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
-        <div class="float-right"> 
-          <a class="btn btn-sm btn-success" href="{{route('post.create')}}">Add Post</a>     
-        </div>
+          @include('includes.messages')
+
+          @can('posts.create', Auth::user())
+          <div class="float-right"> 
+            <a class="btn btn-sm btn-success" href="{{route('post.create')}}">Add Post</a>
+          </div>
+          @endcan
+
           <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
@@ -38,7 +43,7 @@
                       <th>Slug</th>
                       <th>Tags</th>
                       <th>Image</th>
-                      <th>Action</th>
+                      <th>Actions</th>
                   </tr>
               </thead>
               <tbody>
@@ -81,7 +86,8 @@
                       <th>Sub Title</th>
                       <th>Slug</th>
                       <th>Tags</th>
-                      <th>Action</th>
+                      <th>Image</th>
+                      <th>Actions</th>
                   </tr>
               </tfoot>
           </table>

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Roles</h1>
+            <h1>Permission</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-              <li class="breadcrumb-item active">Roles</li>
+              <li class="breadcrumb-item active">Permission</li>
             </ol>
           </div>
         </div>
@@ -26,28 +26,30 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
-          @include('includes.messages')
+            @include('includes.messages')
         <div class="float-right"> 
-          <a class="btn btn-sm btn-success" href="{{route('role.create')}}">Create Role</a>     
+          <a class="btn btn-sm btn-success" href="{{route('permission.create')}}">Create Permission</a>     
         </div>
           <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
                       <th width="25px">#</th>
-                      <th>Role Name</th>
+                      <th>Permission Name</th>
+                      <th>Permission For</th>
                       <th>Action</th>
                   </tr>
               </thead>
               <tbody>
                   @php $count = 1; @endphp
-                  @foreach($roles as $role)
+                  @foreach($permissions as $permission)
                   <tr>
                       <td>{{$count++}}</td>
-                      <td>{{$role->name}}</td>
+                      <td>{{$permission->name}}</td>
+                      <td>{{$permission->for}}</td>
                       <td>
-                        <a class="btn btn-sm btn-warning" href="{{route('role.edit', $role->id)}}"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-sm btn-warning" href="{{route('permission.edit', $permission->id)}}"><i class="fa fa-edit"></i></a>
 
-                        <form id="delete-form-{{$role->id}}" action="{{route('role.destroy', $role->id)}}" method="post" style="display: none">
+                        <form id="delete-form-{{$permission->id}}" action="{{route('permission.destroy', $permission->id)}}" method="post" style="display: none">
                           @csrf
                           @method('DELETE')
                         </form>
@@ -55,7 +57,7 @@
                           onclick="
                             if(confirm('Are you sure, You want to delete?')){
                               event.preventDefault();
-                              document.getElementById('delete-form-{{$role->id}}').submit();
+                              document.getElementById('delete-form-{{$permission->id}}').submit();
                             }else{
                               event.preventDefault();
                             }">
@@ -68,7 +70,8 @@
               <tfoot>
                   <tr>
                       <th>#</th>
-                      <th>Role Name</th>
+                      <th>Permission Name</th>
+                      <th>Permission For</th>
                       <th>Action</th>
                   </tr>
               </tfoot>

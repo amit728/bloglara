@@ -26,9 +26,10 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
-        <div class="float-right"> 
-          <a class="btn btn-sm btn-success" href="{{route('category.create')}}">Add Category</a>     
-        </div>
+          @include('includes.messages')
+          <div class="float-right"> 
+            <a class="btn btn-sm btn-success" href="{{route('category.create')}}">Add Category</a>     
+          </div>
           <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>

@@ -47,8 +47,14 @@
           </li>
           <li class="nav-item">
             <a href="{{route('role.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-pencil"></i>
+              <i class="nav-icon fas fa-plus-square"></i>
               <p>Roles</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('permission.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-plus-square"></i>
+              <p>Permissions</p>
             </a>
           </li>
         </ul>
@@ -56,4 +62,4 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </asid
+  </aside>

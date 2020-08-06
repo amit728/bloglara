@@ -23,8 +23,13 @@
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            {{$post->created_at->diffforHumans()}}</p>
+            <a href="#">Start Bootstrap</a>&nbsp;
+            {{$post->created_at->diffforHumans()}}
+            <a href="" class="float-right">
+              <small>0</small>
+              <i class="fa fa-thumbs-up"></i>
+            </a>
+          </p>
         </div>
         <hr>
         @endforeach

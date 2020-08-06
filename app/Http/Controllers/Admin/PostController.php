@@ -74,7 +74,7 @@ class PostController extends Controller
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
 
-        return redirect('admin/post');
+        return redirect(route('post.index'))->with('message', 'post created successfully');
     }
 
     /**
@@ -132,7 +132,7 @@ class PostController extends Controller
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
 
-        return redirect(route('post.index'));
+        return redirect(route('post.index'))->with('message', 'Post updated successfully');
     }
 
     /**
@@ -144,6 +144,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::where('id', $id)->delete();
-        return back();
+        return redirect(route('post.index'))->with('message', 'Post deleted successfully');
     }
 }

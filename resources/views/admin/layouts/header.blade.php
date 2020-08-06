@@ -49,7 +49,7 @@
               <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  Brad Diesel
+                  {{ucfirst(Auth::user()->name)}}
                 </h3>
                 <p class="text-sm">Profile</p>
               </div>

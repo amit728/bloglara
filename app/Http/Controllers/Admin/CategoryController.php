@@ -57,7 +57,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
-        return redirect('admin/category');
+        return redirect('admin/category')->with('message', 'Category created successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('message', 'Category updated successfully');
     }
 
     /**
@@ -114,6 +114,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::where('id',$id)->delete();
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('message', 'Category deleted successfully');
     }
 }

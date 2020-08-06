@@ -19,6 +19,7 @@ Route::get('admin/dashboard','HomeController@index')->name('admin.dashboard');
 
 Route::resource('admin/user', 'UserController');
 Route::resource('admin/role', 'RoleController');
+Route::resource('admin/permission', 'PermissionController');
 Route::resource('admin/post', 'PostController');
 Route::resource('admin/tag', 'TagController');
 Route::resource('admin/category', 'CategoryController');

@@ -26,9 +26,10 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
-        <div class="float-right"> 
-          <a class="btn btn-sm btn-success" href="{{route('user.create')}}">Add User</a>     
-        </div>
+          @include('includes.messages')
+          <div class="float-right"> 
+            <a class="btn btn-sm btn-success" href="{{route('user.create')}}">Add User</a>     
+          </div>
           <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
@@ -36,6 +37,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Role</th>
+                      <th>Status</th>
                       <th>Action</th>
                   </tr>
               </thead>
@@ -46,9 +48,20 @@
                       <td>{{$count++}}</td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
-                      <td>{{$user->email}}</td>
                       <td>
-                        <a class="btn btn-sm btn-warning" href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
+                        @foreach($user->roles as $role)
+                            {{$role->name}}, 
+                        @endforeach
+                      </td>
+                      <td>
+                        @if($user->status == 1)
+                          <span class="badge badge-success">Active</span>
+                        @else
+                          <span class="badge badge-warning">InActive</span>
+                        @endif
+                      </td>
+                      <td>
+                        <a class="btn btn-sm btn-info" href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
                         <a class="btn btn-sm btn-danger" href="" 
                           onclick="
                             if(confirm('Are you sure, You want to delete?')){
@@ -59,7 +72,7 @@
                             }">
                           <i class="fa fa-trash"></i>
                         </a>
-                        <form id="delete-form-{{$user->id}}" action="{{route('post.destroy', $user->id)}}" method="post" style="display: none">
+                        <form id="delete-form-{{$user->id}}" action="{{route('user.destroy', $user->id)}}" method="post" style="display: none">
                           @csrf
                           @method('DELETE')
                         </form>
@@ -73,6 +86,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Role</th>
+                      <th>Status</th>
                       <th>Action</th>
                   </tr>
               </tfoot>
